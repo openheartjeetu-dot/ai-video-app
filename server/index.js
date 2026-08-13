@@ -20,4 +20,5 @@ app.get('/status/:id', (req, res) => {
   if (!t) return res.status(404).json({ error: 'task not found' });
   res.json({ status: t.status, videoUrl: t.videoUrl || null });
 });
-app.listen(3000, () => console.log('Backend running on port 3000'));
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log('Backend running on port ' + PORT));
