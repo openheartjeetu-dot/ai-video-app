@@ -1,19 +1,26 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import {
   StyleSheet, Text, TextInput, View, TouchableOpacity,
   KeyboardAvoidingView, Platform, ActivityIndicator, Alert
 } from 'react-native';
-import { Video, ResizeMode } from 'expo-av';
+import { useVideoPlayer, VideoView } from 'expo-video';
 
-const BACKEND_URL = 'https://potential-spoon-wvr95xp5xq6j3gv9q-3000.app.github.dev';
+const BACKEND_URL = 'https://ai-video-backend-badg.onrender.com';;
+
+function Player({ uri }) {
+  const player = useVideoPlayer(uri, (p) => {
+    p.loop = true;
+    p.play();
+  });
+  return <VideoView player={player} style={styles.video} allowsFullscreen />;
+}
 
 export default function App() {
   const [prompt, setPrompt] = useState('A young boy walking alone in the rain, anime style...');
   const [status, setStatus] = useState('idle');
   const [taskId, setTaskId] = useState(null);
   const [videoUrl, setVideoUrl] = useState(null);
-  const video = useRef(null);
 
   useEffect(() => {
     let interval;
@@ -78,14 +85,7 @@ export default function App() {
       )}
       {status === 'done' && videoUrl && (
         <View style={styles.videoContainer}>
-          <Video
-            ref={video}
-            style={styles.video}
-            source={{ uri: videoUrl }}
-            useNativeControls
-            resizeMode={ResizeMode.CONTAIN}
-            shouldPlay
-          />
+          <Player uri={videoUrl} key={videoUrl} />
           <TouchableOpacity style={styles.button} onPress={() => { setStatus('idle'); setVideoUrl(null); }}>
             <Text style={styles.buttonText}>Make Another 🔄</Text>
           </TouchableOpacity>

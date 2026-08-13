@@ -4,7 +4,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 const tasks = {};
-const SAMPLE_VIDEO = 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4';
+const SAMPLE_VIDEO = 'https://www.w3schools.com/html/mov_bbb.mp4';
 app.post('/generate', (req, res) => {
   const prompt = req.body.prompt || 'test';
   const id = 'task_' + Date.now();
