@@ -3,6 +3,7 @@ const cors = require('cors');
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(express.static('public'));
 
 const HF_TOKEN = process.env.HF_TOKEN || '';
 const APP_URL = process.env.APP_URL || 'https://ai-video-backend-badg.onrender.com';
