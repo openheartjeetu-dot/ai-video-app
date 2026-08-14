@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import { useVideoPlayer, VideoView } from 'expo-video';
 
-const APP_NAME = 'JeetFlix';
+const APP_NAME = 'AuraStream';
 const CATALOG = [
  {id:'his_girl_friday',t:'His Girl Friday',y:1940,g:'Comedy',d:'Cary Grant comedy about a fast-talking reporter.'},
  {id:'night_of_the_living_dead',t:'Night of the Living Dead',y:1968,g:'Horror',d:'The original zombie nightmare.'},
@@ -99,7 +99,7 @@ function Home({ onOpen, onPlay, onSearch }) {
   return (
     <ScrollView style={st.page} showsVerticalScrollIndicator={false}>
       <View style={st.topBar}>
-        <Text style={st.logo}>JEET<Text style={st.logo2}>FLIX</Text></Text>
+        <Text style={st.logo}>AURA<Text style={st.logo2}>STREAM</Text></Text>
         <TouchableOpacity style={st.searchPill} onPress={onSearch}>
           <Text style={st.searchPillTxt}>🔍 Search movies...</Text>
         </TouchableOpacity>
@@ -126,7 +126,7 @@ function Home({ onOpen, onPlay, onSearch }) {
       <Row title="👻 Horror" items={CATALOG.filter(m => m.g === 'Horror')} onOpen={onOpen} />
       <Row title="🚀 Sci-Fi" items={CATALOG.filter(m => m.g === 'Sci-Fi')} onOpen={onOpen} />
       <View style={st.foot}>
-        <Text style={st.footTxt}>JeetFlix v1.0 • Made with ❤️ in India</Text>
+        <Text style={st.footTxt}>AuraStream v1.0 • Made with ❤️ in India</Text>
       </View>
     </ScrollView>
   );
@@ -184,7 +184,7 @@ function SettingsPage({ saver, setSaver }) {
       </View>
       <View style={st.setCard}>
         <Text style={st.setName}>ℹ️ About</Text>
-        <Text style={st.setVal}>JeetFlix v1.0{'\n'}100% legal public-domain movies</Text>
+        <Text style={st.setVal}>AuraStream v1.0{'\n'}100% legal public-domain movies</Text>
       </View>
     </View>
   );
